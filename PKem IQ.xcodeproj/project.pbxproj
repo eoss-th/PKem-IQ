@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		92B6B1FE1B95F97100EDAD5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6B1FD1B95F97100EDAD5B /* AppDelegate.swift */; };
+		92B6B2001B95F97100EDAD5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6B1FF1B95F97100EDAD5B /* ViewController.swift */; };
+		92B6B2031B95F97100EDAD5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B6B2011B95F97100EDAD5B /* Main.storyboard */; };
+		92B6B2051B95F97100EDAD5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92B6B2041B95F97100EDAD5B /* Images.xcassets */; };
+		92B6B2081B95F97100EDAD5B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B6B2061B95F97100EDAD5B /* LaunchScreen.xib */; };
+		92B6B2141B95F97100EDAD5B /* PKem_IQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6B2131B95F97100EDAD5B /* PKem_IQTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		92B6B20E1B95F97100EDAD5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92B6B1F01B95F97000EDAD5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92B6B1F71B95F97000EDAD5B;
+			remoteInfo = "PKem IQ";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		92B6B1F81B95F97100EDAD5B /* PKem IQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PKem IQ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		92B6B1FC1B95F97100EDAD5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92B6B1FD1B95F97100EDAD5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		92B6B1FF1B95F97100EDAD5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		92B6B2021B95F97100EDAD5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		92B6B2041B95F97100EDAD5B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		92B6B2071B95F97100EDAD5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		92B6B20D1B95F97100EDAD5B /* PKem IQTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PKem IQTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		92B6B2121B95F97100EDAD5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92B6B2131B95F97100EDAD5B /* PKem_IQTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKem_IQTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		92B6B1F51B95F97000EDAD5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92B6B20A1B95F97100EDAD5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		92B6B1EF1B95F97000EDAD5B = {
+			isa = PBXGroup;
+			children = (
+				92B6B1FA1B95F97100EDAD5B /* PKem IQ */,
+				92B6B2101B95F97100EDAD5B /* PKem IQTests */,
+				92B6B1F91B95F97100EDAD5B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		92B6B1F91B95F97100EDAD5B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92B6B1F81B95F97100EDAD5B /* PKem IQ.app */,
+				92B6B20D1B95F97100EDAD5B /* PKem IQTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92B6B1FA1B95F97100EDAD5B /* PKem IQ */ = {
+			isa = PBXGroup;
+			children = (
+				92B6B1FD1B95F97100EDAD5B /* AppDelegate.swift */,
+				92B6B1FF1B95F97100EDAD5B /* ViewController.swift */,
+				92B6B2011B95F97100EDAD5B /* Main.storyboard */,
+				92B6B2041B95F97100EDAD5B /* Images.xcassets */,
+				92B6B2061B95F97100EDAD5B /* LaunchScreen.xib */,
+				92B6B1FB1B95F97100EDAD5B /* Supporting Files */,
+			);
+			path = "PKem IQ";
+			sourceTree = "<group>";
+		};
+		92B6B1FB1B95F97100EDAD5B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				92B6B1FC1B95F97100EDAD5B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		92B6B2101B95F97100EDAD5B /* PKem IQTests */ = {
+			isa = PBXGroup;
+			children = (
+				92B6B2131B95F97100EDAD5B /* PKem_IQTests.swift */,
+				92B6B2111B95F97100EDAD5B /* Supporting Files */,
+			);
+			path = "PKem IQTests";
+			sourceTree = "<group>";
+		};
+		92B6B2111B95F97100EDAD5B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				92B6B2121B95F97100EDAD5B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		92B6B1F71B95F97000EDAD5B /* PKem IQ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92B6B2171B95F97100EDAD5B /* Build configuration list for PBXNativeTarget "PKem IQ" */;
+			buildPhases = (
+				92B6B1F41B95F97000EDAD5B /* Sources */,
+				92B6B1F51B95F97000EDAD5B /* Frameworks */,
+				92B6B1F61B95F97000EDAD5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PKem IQ";
+			productName = "PKem IQ";
+			productReference = 92B6B1F81B95F97100EDAD5B /* PKem IQ.app */;
+			productType = "com.apple.product-type.application";
+		};
+		92B6B20C1B95F97100EDAD5B /* PKem IQTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92B6B21A1B95F97100EDAD5B /* Build configuration list for PBXNativeTarget "PKem IQTests" */;
+			buildPhases = (
+				92B6B2091B95F97100EDAD5B /* Sources */,
+				92B6B20A1B95F97100EDAD5B /* Frameworks */,
+				92B6B20B1B95F97100EDAD5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92B6B20F1B95F97100EDAD5B /* PBXTargetDependency */,
+			);
+			name = "PKem IQTests";
+			productName = "PKem IQTests";
+			productReference = 92B6B20D1B95F97100EDAD5B /* PKem IQTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92B6B1F01B95F97000EDAD5B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "EOSS-TH";
+				TargetAttributes = {
+					92B6B1F71B95F97000EDAD5B = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					92B6B20C1B95F97100EDAD5B = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 92B6B1F71B95F97000EDAD5B;
+					};
+				};
+			};
+			buildConfigurationList = 92B6B1F31B95F97000EDAD5B /* Build configuration list for PBXProject "PKem IQ" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 92B6B1EF1B95F97000EDAD5B;
+			productRefGroup = 92B6B1F91B95F97100EDAD5B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92B6B1F71B95F97000EDAD5B /* PKem IQ */,
+				92B6B20C1B95F97100EDAD5B /* PKem IQTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		92B6B1F61B95F97000EDAD5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92B6B2031B95F97100EDAD5B /* Main.storyboard in Resources */,
+				92B6B2081B95F97100EDAD5B /* LaunchScreen.xib in Resources */,
+				92B6B2051B95F97100EDAD5B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92B6B20B1B95F97100EDAD5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92B6B1F41B95F97000EDAD5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92B6B2001B95F97100EDAD5B /* ViewController.swift in Sources */,
+				92B6B1FE1B95F97100EDAD5B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92B6B2091B95F97100EDAD5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92B6B2141B95F97100EDAD5B /* PKem_IQTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		92B6B20F1B95F97100EDAD5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92B6B1F71B95F97000EDAD5B /* PKem IQ */;
+			targetProxy = 92B6B20E1B95F97100EDAD5B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		92B6B2011B95F97100EDAD5B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92B6B2021B95F97100EDAD5B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		92B6B2061B95F97100EDAD5B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92B6B2071B95F97100EDAD5B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		92B6B2151B95F97100EDAD5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		92B6B2161B95F97100EDAD5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		92B6B2181B95F97100EDAD5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "PKem IQ/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		92B6B2191B95F97100EDAD5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "PKem IQ/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		92B6B21B1B95F97100EDAD5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PKem IQTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PKem IQ.app/PKem IQ";
+			};
+			name = Debug;
+		};
+		92B6B21C1B95F97100EDAD5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PKem IQTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PKem IQ.app/PKem IQ";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92B6B1F31B95F97000EDAD5B /* Build configuration list for PBXProject "PKem IQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92B6B2151B95F97100EDAD5B /* Debug */,
+				92B6B2161B95F97100EDAD5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92B6B2171B95F97100EDAD5B /* Build configuration list for PBXNativeTarget "PKem IQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92B6B2181B95F97100EDAD5B /* Debug */,
+				92B6B2191B95F97100EDAD5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		92B6B21A1B95F97100EDAD5B /* Build configuration list for PBXNativeTarget "PKem IQTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92B6B21B1B95F97100EDAD5B /* Debug */,
+				92B6B21C1B95F97100EDAD5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 92B6B1F01B95F97000EDAD5B /* Project object */;
+}
