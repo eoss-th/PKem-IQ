@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import iAd
 import GameKit
 
 class ViewController: UIViewController, GKGameCenterControllerDelegate {
@@ -23,48 +22,48 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
     
     @IBOutlet weak var toggleSound: UISwitch!
     
-    @IBAction func toggleSound(sender: UISwitch) {
-        SoundConfig().toggle(sender.on)
+    @IBAction func toggleSound(_ sender: UISwitch) {
+        SoundConfig().toggle(sender.isOn)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        threeNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.greenColor())
+        threeNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.green)
         
-        fourNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.yellowColor())
+        fourNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.yellow)
         
-        fiveNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.redColor())
+        fiveNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.red)
         
-        continue1.makeRoundButton(1.2, radius: 15, color: UIColor.blueColor())
+        continue1.makeRoundButton(1.2, radius: 15, color: UIColor.blue)
         
-        continue2.makeRoundButton(1.2, radius: 15, color: UIColor.blueColor())
+        continue2.makeRoundButton(1.2, radius: 15, color: UIColor.blue)
         
-        continue3.makeRoundButton(1.2, radius: 15, color: UIColor.blueColor())
+        continue3.makeRoundButton(1.2, radius: 15, color: UIColor.blue)
         
         let score=Score()
         
         maxScore.text = "Max Score: \(score.max)"
         
-        toggleSound.on = SoundConfig().isOn()
+        toggleSound.isOn = SoundConfig().isOn()
         
-        threeNumbers.enabled = score.max >= 0
-        continue1.hidden = score.last <= 0 || score.last >= 100
+        threeNumbers.isEnabled = score.max >= 0
+        continue1.isHidden = score.last <= 0 || score.last >= 100
         
-        fourNumbers.enabled = score.max >= 100
-        continue2.hidden = score.last <= 100 || score.last >= 235
+        fourNumbers.isEnabled = score.max >= 100
+        continue2.isHidden = score.last <= 100 || score.last >= 235
         
-        fiveNumbers.enabled = score.max >= 235
-        continue3.hidden = score.last <= 235 || score.last >= 235 + 129
+        fiveNumbers.isEnabled = score.max >= 235
+        continue3.isHidden = score.last <= 235 || score.last >= 235 + 129
         
     }
     
-    func gameCenter(onSucceed:()->()) {
+    func gameCenter(_ onSucceed:@escaping ()->()) {
         
         let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         
-        if localPlayer.authenticated {
+        if localPlayer.isAuthenticated {
             
             onSucceed()
             
@@ -75,19 +74,19 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
                 // 1 Show login if player is not logged in
                 if((ViewController) != nil) {
                     
-                    self.presentViewController(ViewController!, animated: true, completion: nil)
+                    self.present(ViewController!, animated: true, completion: nil)
                     
                 }
                     
                     // 2 Player is already euthenticated & logged in, load game center
-                else if (localPlayer.authenticated) {
+                else if (localPlayer.isAuthenticated) {
                     
                     // Get the default leaderboard ID
-                    localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String?, error: NSError?) -> Void in
+                    localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer: String?, error: Error?) -> Void in
                         
                         if error != nil {
                             
-                            print(error)
+                            print(error ?? "")
                             
                         } else {
                             
@@ -101,7 +100,7 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
                     
                     // 3 Game center is not enabled on the users device
                     print("Local player could not be authenticated, disabling game center")
-                    print(error)
+                    print(error ?? "")
                 }
                 
             }
@@ -114,49 +113,34 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let score=Score()
-        
-        let levelController = segue.destinationViewController as! LevelController
-        
+        let levelController = segue.destination as! LevelController
         levelController.soundEnabled = SoundConfig().isOn()
         
         switch segue.identifier! {
         case "3Numbers":
-            levelController.level = 1
-            levelController.scorePoint = 0
-            levelController.index = 0
+            levelController.player.newLevel(0)
         case "4Numbers":
-            levelController.level = 2
-            levelController.scorePoint = 100
-            levelController.index = 0
+            levelController.player.newLevel(1)
         case "5Numbers":
-            levelController.level = 3
-            levelController.scorePoint = 235
-            levelController.index = 0
+            levelController.player.newLevel(2)
         case "continue1":
-            levelController.level = 1
-            levelController.scorePoint = score.last
-            levelController.index = score.last
+            levelController.player.continueLevel(0)
         case "continue2":
-            levelController.level = 2
-            levelController.scorePoint = score.last
-            levelController.index = score.last - 100
+            levelController.player.continueLevel(1)
         default:
-            levelController.level = 3
-            levelController.scorePoint = score.last
-            levelController.index = score.last - 100 - 135
+            levelController.player.continueLevel(2)
         }
         
     }
     
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         
-        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+        gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func showLeaderboard(sender: AnyObject) {
+    @IBAction func showLeaderboard(_ sender: AnyObject) {
         
         gameCenter({ () -> () in
             
@@ -168,11 +152,11 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
             
             let gcVC: GKGameCenterViewController = GKGameCenterViewController()
             gcVC.gameCenterDelegate = self
-            gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+            gcVC.viewState = GKGameCenterViewControllerState.leaderboards
             gcVC.leaderboardIdentifier = leaderboardID
-            self.presentViewController(gcVC, animated: true, completion: nil)
+            self.present(gcVC, animated: true, completion: nil)
             
-            GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+            GKScore.report([sScore], withCompletionHandler: { (error: Error?) -> Void in
                 
                 if error != nil {
                     //println(error.localizedDescription)

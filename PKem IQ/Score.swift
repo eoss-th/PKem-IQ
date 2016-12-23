@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Score {
     
@@ -17,24 +18,19 @@ class Score {
         
         let file = "score.json"
         
-        if let dirs : [String] = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) {
-            
-            let dir = dirs[0] //documents directory
-            
-            let filePath = dir + file
-            
-            if let data = try? NSData(contentsOfFile:filePath, options:NSDataReadingOptions.DataReadingMappedAlways) {
+        let dirs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let dir = dirs[0] //documents directory
+        let filePath = dir.path + "/" + file;
+        
+        if let data = try? Data(contentsOf: URL(fileURLWithPath: filePath), options:NSData.ReadingOptions.alwaysMapped) {
                 
-                //var str = NSString(data: data, encoding: NSUTF8StringEncoding)
-                let scoreJSON = JSON(data:data)
+            //var str = NSString(data: data, encoding: NSUTF8StringEncoding)
+            let scoreJSON = JSON(data:data)
                 
-                max = scoreJSON[0].intValue
-                last = scoreJSON[1].intValue
+            max = scoreJSON[0].intValue
+            last = scoreJSON[1].intValue
                 
-            }
         }
-        
-        
     }
     
     convenience init(newScore score:Int) {
@@ -57,18 +53,14 @@ class Score {
         
         let file = "score.json"
         
-        if let dirs : [String] = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) {
-            
-            let dir = dirs[0] //documents directory
-            
-            let filePath = dir + file
-            
-            let str = scoreJSON.description
-            let data = str.dataUsingEncoding(NSUTF8StringEncoding)!
-            data.writeToFile(filePath, atomically: true)
-            
-        }
+        let dirs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let dir = dirs[0] //documents directory
+        let filePath = dir.path + "/" + file;
         
+        let str = scoreJSON.description
+        let data = str.data(using: String.Encoding.utf8)!
+        try? data.write(to: URL(fileURLWithPath: filePath), options: [.atomic])
+
     }
     
 }

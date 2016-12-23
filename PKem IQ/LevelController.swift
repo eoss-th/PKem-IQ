@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import iAd
+import SwiftyJSON
 
 class LevelController : UIViewController {
     
@@ -27,54 +27,50 @@ class LevelController : UIViewController {
     @IBOutlet weak var mul: UIButton!
     @IBOutlet weak var div: UIButton!
     
-    var levelJSON: JSON!
-    var index: Int = 0
-    var scorePoint: Int = 0
-    var level: Int = 0
+    let player = Player()
+    
     var myPushed: Array<UIButton>=[]
     
-    var timer = NSTimer()
+    var timer = Timer()
     var timeCounter:Int = 0
     
     var soundEnabled: Bool = false
     
     var sound:Sound!
     
-    @IBAction func plus(sender: UIButton) {
+    @IBAction func plus(_ sender: UIButton) {
         onPushed(sender)
     }
-    @IBAction func minus(sender: UIButton) {
+    @IBAction func minus(_ sender: UIButton) {
         onPushed(sender)
     }
-    @IBAction func mul(sender: UIButton) {
+    @IBAction func mul(_ sender: UIButton) {
         onPushed(sender)
     }
-    @IBAction func div(sender: UIButton) {
+    @IBAction func div(_ sender: UIButton) {
         onPushed(sender)
     }
-    @IBAction func num1(sender: UIButton) {
+    @IBAction func num1(_ sender: UIButton) {
         onPushed(sender)
     }
-    @IBAction func num2(sender: UIButton) {
+    @IBAction func num2(_ sender: UIButton) {
         onPushed(sender)
     }
-    @IBAction func num3(sender: UIButton) {
+    @IBAction func num3(_ sender: UIButton) {
         onPushed(sender)
     }
-    @IBAction func num4(sender: UIButton) {
+    @IBAction func num4(_ sender: UIButton) {
         onPushed(sender)
     }
-    @IBAction func num5(sender: UIButton) {
+    @IBAction func num5(_ sender: UIButton) {
         onPushed(sender)
     }
-    @IBAction func backspace(sender: UISwipeGestureRecognizer) {
+    @IBAction func backspace(_ sender: UISwipeGestureRecognizer) {
         if (myPushed.count>0) {
-            
-            sound.playBack()
             
             self.myPushed[self.myPushed.count-1].animateRestore()
             
-            myPushed.removeAtIndex(myPushed.count-1)
+            myPushed.remove(at: myPushed.count-1)
             
             updateAnswer()
         }
@@ -83,36 +79,27 @@ class LevelController : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.canDisplayBannerAds = true
         
         self.sound = Sound(enabled: soundEnabled)
         
-        answer.layer.borderColor = UIColor.greenColor().CGColor
-        answer.textColor = UIColor.greenColor()
+        answer.layer.borderColor = UIColor.green.cgColor
+        answer.textColor = UIColor.green
         
-        score.makeRoundLabel(1.2, radius: 15, color: UIColor.yellowColor())
-        answer.makeRoundLabel(2, radius: 30, color: UIColor.greenColor())
+        score.makeRoundLabel(1.2, radius: 15, color: UIColor.yellow)
+        answer.makeRoundLabel(2, radius: 30, color: UIColor.green)
         
-        menu.makeRoundButton(1.2, radius: 15, color: UIColor.redColor())
-        plus.makeRoundButton(1.2, radius: 5, color: UIColor.whiteColor())
-        minus.makeRoundButton(1.2, radius: 5, color: UIColor.whiteColor())
-        mul.makeRoundButton(1.2, radius: 5, color: UIColor.whiteColor())
-        div.makeRoundButton(1.2, radius: 5, color: UIColor.whiteColor())
-        num1.makeRoundButton(1.2, radius: 25, color: UIColor.orangeColor())
-        num2.makeRoundButton(1.2, radius: 25, color: UIColor.cyanColor())
-        num3.makeRoundButton(1.2, radius: 25, color: UIColor.magentaColor())
-        num4.makeRoundButton(1.2, radius: 25, color: UIColor.brownColor())
-        num5.makeRoundButton(1.2, radius: 25, color: UIColor.purpleColor())
+        menu.makeRoundButton(1.2, radius: 15, color: UIColor.red)
+        plus.makeRoundButton(1.2, radius: 5, color: UIColor.white)
+        minus.makeRoundButton(1.2, radius: 5, color: UIColor.white)
+        mul.makeRoundButton(1.2, radius: 5, color: UIColor.white)
+        div.makeRoundButton(1.2, radius: 5, color: UIColor.white)
+        num1.makeRoundButton(1.2, radius: 25, color: UIColor.orange)
+        num2.makeRoundButton(1.2, radius: 25, color: UIColor.cyan)
+        num3.makeRoundButton(1.2, radius: 25, color: UIColor.magenta)
+        num4.makeRoundButton(1.2, radius: 25, color: UIColor.brown)
+        num5.makeRoundButton(1.2, radius: 25, color: UIColor.purple)
         
-        
-        let filePath = NSBundle.mainBundle().pathForResource("level\(level)",ofType:"json")
-        
-        if let data = try? NSData(contentsOfFile:filePath!, options:NSDataReadingOptions.DataReadingMappedAlways) {
-            
-            levelJSON = JSON(data:data)
-            
-            next()
-        }
+        next()
         
     }
     
@@ -127,133 +114,133 @@ class LevelController : UIViewController {
         }
         
         if timeCounter<0 {
-            performSegueWithIdentifier("menu", sender: nil)
+            performSegue(withIdentifier: "menu", sender: nil)
             return
         }
         
-        menu.setTitle("\(timeCounter--)", forState: UIControlState.Normal)
+        menu.setTitle("\(timeCounter)", for: UIControlState())
+        timeCounter = timeCounter - 1
         
     }
     
     func next() {
         
         //Level Up!
-        if (index>=levelJSON.count) {
+        if (player.isClearedLevel()) {
             
-            performSegueWithIdentifier("menu", sender: nil)
+            performSegue(withIdentifier: "menu", sender: nil)
             
             return
         }
         
-        sound.playNext()
         timer.invalidate()
         timeCounter = 90
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(LevelController.updateCounter), userInfo: nil, repeats: true)
         
         myPushed = []
         
-        score.text = String(scorePoint)
-        answer.text = levelJSON[index]["result"].number?.stringValue
+        score.text = String(player.scorePoint)
+        answer.text = player.answer()
         
-        let answers = levelJSON[index]["answers"]
+        let answers = player.answers()
         let answersIndex = Int(arc4random_uniform(UInt32(answers.count)))
         
-        if level==1 {
+        if player.currentLevel==0 {
             
-            num1.hidden = false
-            num2.hidden = false
-            num3.hidden = false
-            num4.hidden = true
-            num5.hidden = true
-            plus.hidden = false
-            minus.hidden = false
-            mul.hidden = false
-            div.hidden = false
+            num1.isHidden = false
+            num2.isHidden = false
+            num3.isHidden = false
+            num4.isHidden = true
+            num5.isHidden = true
+            plus.isHidden = false
+            minus.isHidden = false
+            mul.isHidden = false
+            div.isHidden = false
             
             var choices = [0,2,4]
             var chIndex: Int
             
             chIndex = Int(arc4random_uniform(UInt32(choices.count)))
-            num1.setTitle(answers[answersIndex][choices[chIndex]].string, forState: UIControlState.Normal)
-            choices.removeAtIndex(chIndex)
+            num1.setTitle(answers[answersIndex][choices[chIndex]].string, for: UIControlState())
+            choices.remove(at: chIndex)
             
             chIndex = Int(arc4random_uniform(UInt32(choices.count)))
-            num2.setTitle(answers[answersIndex][choices[chIndex]].string, forState: UIControlState.Normal)
-            choices.removeAtIndex(chIndex)
+            num2.setTitle(answers[answersIndex][choices[chIndex]].string, for: UIControlState())
+            choices.remove(at: chIndex)
             
-            num3.setTitle(answers[answersIndex][choices[0]].string, forState: UIControlState.Normal)
+            num3.setTitle(answers[answersIndex][choices[0]].string, for: UIControlState())
             
             num1.animateRestart()
             num2.animateRestart()
             num3.animateRestart()
             
-        } else if level==2 {
+        } else if player.currentLevel==1 {
             
-            num1.hidden = false
-            num2.hidden = false
-            num3.hidden = false
-            num4.hidden = false
-            num5.hidden = true
-            plus.hidden = false
-            minus.hidden = false
-            mul.hidden = false
-            div.hidden = false
+            num1.isHidden = false
+            num2.isHidden = false
+            num3.isHidden = false
+            num4.isHidden = false
+            num5.isHidden = true
+            plus.isHidden = false
+            minus.isHidden = false
+            mul.isHidden = false
+            div.isHidden = false
             
             var choices = [0,2,4,6]
             var chIndex: Int
             
             chIndex = Int(arc4random_uniform(UInt32(choices.count)))
-            num1.setTitle(answers[answersIndex][choices[chIndex]].string, forState: UIControlState.Normal)
-            choices.removeAtIndex(chIndex)
+            num1.setTitle(answers[answersIndex][choices[chIndex]].string, for: UIControlState())
+            choices.remove(at: chIndex)
             
             chIndex = Int(arc4random_uniform(UInt32(choices.count)))
-            num2.setTitle(answers[answersIndex][choices[chIndex]].string, forState: UIControlState.Normal)
-            choices.removeAtIndex(chIndex)
+            num2.setTitle(answers[answersIndex][choices[chIndex]].string, for: UIControlState())
+            choices.remove(at: chIndex)
             
             chIndex = Int(arc4random_uniform(UInt32(choices.count)))
-            num3.setTitle(answers[answersIndex][choices[chIndex]].string, forState: UIControlState.Normal)
-            choices.removeAtIndex(chIndex)
+            num3.setTitle(answers[answersIndex][choices[chIndex]].string, for: UIControlState())
+            choices.remove(at: chIndex)
             
-            num4.setTitle(answers[answersIndex][choices[0]].string, forState: UIControlState.Normal)
+            num4.setTitle(answers[answersIndex][choices[0]].string, for: UIControlState())
             
             num1.animateRestart()
             num2.animateRestart()
             num3.animateRestart()
             num4.animateRestart()
             
-        } else if level==3 {
+        } else if player.currentLevel==2 {
     
-            num1.hidden = false
-            num2.hidden = false
-            num3.hidden = false
-            num4.hidden = false
-            num5.hidden = false
-            plus.hidden = false
-            minus.hidden = false
-            mul.hidden = false
-            div.hidden = false
+            num1.isHidden = false
+            num2.isHidden = false
+            num3.isHidden = false
+            num4.isHidden = false
+            num5.isHidden = false
+            plus.isHidden = false
+            minus.isHidden = false
+            mul.isHidden = false
+            div.isHidden = false
     
             var choices = [0,2,4,6,8]
             var chIndex: Int
     
             chIndex = Int(arc4random_uniform(UInt32(choices.count)))
-            num1.setTitle(answers[answersIndex][choices[chIndex]].string, forState: UIControlState.Normal)
-            choices.removeAtIndex(chIndex)
+            num1.setTitle(answers[answersIndex][choices[chIndex]].string, for: UIControlState())
+            choices.remove(at: chIndex)
     
             chIndex = Int(arc4random_uniform(UInt32(choices.count)))
-            num2.setTitle(answers[answersIndex][choices[chIndex]].string, forState: UIControlState.Normal)
-            choices.removeAtIndex(chIndex)
+            num2.setTitle(answers[answersIndex][choices[chIndex]].string, for: UIControlState())
+            choices.remove(at: chIndex)
     
             chIndex = Int(arc4random_uniform(UInt32(choices.count)))
-            num3.setTitle(answers[answersIndex][choices[chIndex]].string, forState: UIControlState.Normal)
-            choices.removeAtIndex(chIndex)
+            num3.setTitle(answers[answersIndex][choices[chIndex]].string, for: UIControlState())
+            choices.remove(at: chIndex)
     
             chIndex = Int(arc4random_uniform(UInt32(choices.count)))
-            num4.setTitle(answers[answersIndex][choices[chIndex]].string, forState: UIControlState.Normal)
-            choices.removeAtIndex(chIndex)
+            num4.setTitle(answers[answersIndex][choices[chIndex]].string, for: UIControlState())
+            choices.remove(at: chIndex)
             
-            num5.setTitle(answers[answersIndex][choices[0]].string, forState: UIControlState.Normal)
+            num5.setTitle(answers[answersIndex][choices[0]].string, for: UIControlState())
     
             num1.animateRestart()
             num2.animateRestart()
@@ -271,7 +258,7 @@ class LevelController : UIViewController {
         updateAnswer()
     }
 
-    func onPushed(button: UIButton) {
+    func onPushed(_ button: UIButton) {
         
         sound.playDrop()
         button.animateHide()
@@ -283,89 +270,70 @@ class LevelController : UIViewController {
     func updateAnswer() {
         
         result.text = ""
-        result.textColor = UIColor.blueColor()
+        result.textColor = UIColor.blue
         
         for c: UIButton in myPushed {
             result.text = result.text! + " " + c.titleLabel!.text!
         }
         
-        if (level==1 && myPushed.count==5) ||
-            (level==2 && myPushed.count==7) ||
-            (level==3 && myPushed.count==9) {
+        if (player.currentLevel==0 && myPushed.count==5) ||
+            (player.currentLevel==1 && myPushed.count==7) ||
+            (player.currentLevel==2 && myPushed.count==9) {
             
-            let answers = levelJSON[index]["answers"]
+            var playerAnswers = [String]()
+            for i in 0 ..< myPushed.count {
+                playerAnswers.append(myPushed[i].titleLabel!.text!)
+            }
             
-            var match:Bool
-            for var i=0; i<answers.count; i++ {
-                let corrects = answers[i]
+            if (player.isCorrected(playerAnswers)) {
                 
-                match = true
-                for var j=0; j<corrects.count; j++ {
-                    if (corrects[j].string != myPushed[j].titleLabel!.text!) {
-                        match = false;
-                        break;
-                    }
-                }
+                player.next()
+                next()
                 
-                if (match) {
-                    
-                    updateScore()
-                    next()
-                    return
-                    
-                }
+                return
+                
+            } else {
+                
+                sound.playWrong()
+                //Invalid Result
+                result.textColor = UIColor.red
+                plus.isEnabled = false
+                minus.isEnabled = false
+                mul.isEnabled = false
+                div.isEnabled = false
+                return
                 
             }
             
-            sound.playWrong()
-            //Invalid Result
-            result.textColor = UIColor.redColor()
-            plus.enabled = false
-            minus.enabled = false
-            mul.enabled = false
-            div.enabled = false
-            return
             
         }
         
         let isForNum = myPushed.count % 2 == 0
         let isForOpt = myPushed.count % 2 != 0
-        num1.enabled = isForNum
-        num2.enabled = isForNum
-        num3.enabled = isForNum
-        num4.enabled = isForNum
-        num5.enabled = isForNum
+        num1.isEnabled = isForNum
+        num2.isEnabled = isForNum
+        num3.isEnabled = isForNum
+        num4.isEnabled = isForNum
+        num5.isEnabled = isForNum
         
-        plus.enabled = isForOpt
-        minus.enabled = isForOpt
-        mul.enabled = isForOpt
-        div.enabled = isForOpt
+        plus.isEnabled = isForOpt
+        minus.isEnabled = isForOpt
+        mul.isEnabled = isForOpt
+        div.isEnabled = isForOpt
     }
-    
-    func updateScore() {
         
-        let newScore = Score(newScore: ++scorePoint)
-        score.text = String(newScore.last)
-        
-        index++
-        
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func swipeRight(sender: AnyObject) {
-        performSegueWithIdentifier("menu", sender: nil)
+    @IBAction func swipeRight(_ sender: AnyObject) {
+        performSegue(withIdentifier: "menu", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         timer.invalidate()
         
-        let viewController = segue.destinationViewController as! ViewController
-        
-        viewController.interstitialPresentationPolicy = ADInterstitialPresentationPolicy.Automatic
     }
 }
