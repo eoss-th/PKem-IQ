@@ -30,17 +30,17 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        threeNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.green)
+        threeNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.white)
         
-        fourNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.yellow)
+        fourNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.white)
         
-        fiveNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.red)
+        fiveNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.white)
         
-        continue1.makeRoundButton(1.2, radius: 15, color: UIColor.blue)
+        continue1.makeRoundButton(1.2, radius: 15, color: UIColor.white)
         
-        continue2.makeRoundButton(1.2, radius: 15, color: UIColor.blue)
+        continue2.makeRoundButton(1.2, radius: 15, color: UIColor.white)
         
-        continue3.makeRoundButton(1.2, radius: 15, color: UIColor.blue)
+        continue3.makeRoundButton(1.2, radius: 15, color: UIColor.white)
         
         let score=Score()
         

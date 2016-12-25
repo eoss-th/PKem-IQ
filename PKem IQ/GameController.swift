@@ -81,22 +81,22 @@ class GameController : UIViewController {
         
         self.sound = Sound(enabled: soundEnabled)
         
-        answer.layer.borderColor = UIColor.green.cgColor
-        answer.textColor = UIColor.green
+        answer.layer.borderColor = UIColor.white.cgColor
+        answer.textColor = UIColor.white
         
-        score.makeRoundLabel(1.2, radius: 15, color: UIColor.yellow)
-        answer.makeRoundLabel(2, radius: 30, color: UIColor.green)
+        score.makeRoundLabel(1.2, radius: 15, color: UIColor.white)
+        answer.makeRoundLabel(2, radius: 30, color: UIColor.white)
         
-        menu.makeRoundButton(1.2, radius: 15, color: UIColor.red)
+        menu.makeRoundButton(1.2, radius: 15, color: UIColor.white)
         plus.makeRoundButton(1.2, radius: 5, color: UIColor.white)
         minus.makeRoundButton(1.2, radius: 5, color: UIColor.white)
         mul.makeRoundButton(1.2, radius: 5, color: UIColor.white)
         div.makeRoundButton(1.2, radius: 5, color: UIColor.white)
-        num1.makeRoundButton(1.2, radius: 25, color: UIColor.orange)
-        num2.makeRoundButton(1.2, radius: 25, color: UIColor.cyan)
-        num3.makeRoundButton(1.2, radius: 25, color: UIColor.magenta)
-        num4.makeRoundButton(1.2, radius: 25, color: UIColor.brown)
-        num5.makeRoundButton(1.2, radius: 25, color: UIColor.purple)
+        num1.makeRoundButton(1.2, radius: 25, color: UIColor.white)
+        num2.makeRoundButton(1.2, radius: 25, color: UIColor.white)
+        num3.makeRoundButton(1.2, radius: 25, color: UIColor.white)
+        num4.makeRoundButton(1.2, radius: 25, color: UIColor.white)
+        num5.makeRoundButton(1.2, radius: 25, color: UIColor.white)
         
         next()
         
@@ -120,7 +120,7 @@ class GameController : UIViewController {
         menu.setTitle("\(timeCounter)", for: UIControlState())
         timeCounter = timeCounter - 1
         
-        updateAnswer()
+        //updateAnswer()
     }
     
     func next() {
@@ -271,7 +271,7 @@ class GameController : UIViewController {
     func updateAnswer() {
         
         result.text = ""
-        result.textColor = UIColor.blue
+        result.textColor = UIColor.white
         
         var playerAnswers = [String]()
         
@@ -300,7 +300,7 @@ class GameController : UIViewController {
                 
                 sound.playWrong()
                 //Invalid Result
-                result.textColor = UIColor.red
+                result.textColor = UIColor.lightGray
                 plus.isEnabled = false
                 minus.isEnabled = false
                 mul.isEnabled = false
