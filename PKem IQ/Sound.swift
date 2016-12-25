@@ -8,7 +8,6 @@
 
 import Foundation
 import AVFoundation
-import SwiftyJSON
 
 class Sound {
     

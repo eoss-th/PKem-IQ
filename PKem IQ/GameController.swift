@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import SwiftyJSON
 
-class LevelController : UIViewController {
+class GameController : UIViewController {
     
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var time: UILabel!
@@ -27,7 +26,7 @@ class LevelController : UIViewController {
     @IBOutlet weak var mul: UIButton!
     @IBOutlet weak var div: UIButton!
     
-    let player = Player()
+    let game = Game()
     
     var myPushed: Array<UIButton>=[]
     
@@ -121,32 +120,36 @@ class LevelController : UIViewController {
         menu.setTitle("\(timeCounter)", for: UIControlState())
         timeCounter = timeCounter - 1
         
+        updateAnswer()
     }
     
     func next() {
         
+        timer.invalidate()
+        
         //Level Up!
-        if (player.isClearedLevel()) {
+        if (game.isClearedLevel()) {
+            
+            print ("Fuck!!!!!")
             
             performSegue(withIdentifier: "menu", sender: nil)
             
             return
         }
         
-        timer.invalidate()
         timeCounter = 90
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(LevelController.updateCounter), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         
         myPushed = []
         
-        score.text = String(player.scorePoint)
-        answer.text = player.answer()
+        score.text = String(game.scorePoint)
+        answer.text = game.answer()
         
-        let answers = player.answers()
+        let answers = game.answers()
         let answersIndex = Int(arc4random_uniform(UInt32(answers.count)))
         
-        if player.currentLevel==0 {
+        if game.currentLevel==0 {
             
             num1.isHidden = false
             num2.isHidden = false
@@ -175,7 +178,7 @@ class LevelController : UIViewController {
             num2.animateRestart()
             num3.animateRestart()
             
-        } else if player.currentLevel==1 {
+        } else if game.currentLevel==1 {
             
             num1.isHidden = false
             num2.isHidden = false
@@ -209,7 +212,7 @@ class LevelController : UIViewController {
             num3.animateRestart()
             num4.animateRestart()
             
-        } else if player.currentLevel==2 {
+        } else if game.currentLevel==2 {
     
             num1.isHidden = false
             num2.isHidden = false
@@ -276,18 +279,18 @@ class LevelController : UIViewController {
             result.text = result.text! + " " + c.titleLabel!.text!
         }
         
-        if (player.currentLevel==0 && myPushed.count==5) ||
-            (player.currentLevel==1 && myPushed.count==7) ||
-            (player.currentLevel==2 && myPushed.count==9) {
+        if (game.currentLevel==0 && myPushed.count==5) ||
+            (game.currentLevel==1 && myPushed.count==7) ||
+            (game.currentLevel==2 && myPushed.count==9) || true {
             
             var playerAnswers = [String]()
             for i in 0 ..< myPushed.count {
                 playerAnswers.append(myPushed[i].titleLabel!.text!)
             }
             
-            if (player.isCorrected(playerAnswers)) {
+            if (/*game.isCorrected(playerAnswers)*/ true) {
                 
-                player.next()
+                game.next()
                 next()
                 
                 return

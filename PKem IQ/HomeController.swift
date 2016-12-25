@@ -9,7 +9,7 @@
 import UIKit
 import GameKit
 
-class ViewController: UIViewController, GKGameCenterControllerDelegate {
+class HomeController: UIViewController, GKGameCenterControllerDelegate {
 
     @IBOutlet weak var leaderBoard: UIButton!
     @IBOutlet weak var maxScore: UILabel!
@@ -115,22 +115,22 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let levelController = segue.destination as! LevelController
-        levelController.soundEnabled = SoundConfig().isOn()
+        let gameController = segue.destination as! GameController
+        gameController.soundEnabled = SoundConfig().isOn()
         
         switch segue.identifier! {
         case "3Numbers":
-            levelController.player.newLevel(0)
+            gameController.game.newLevel(0)
         case "4Numbers":
-            levelController.player.newLevel(1)
+            gameController.game.newLevel(1)
         case "5Numbers":
-            levelController.player.newLevel(2)
+            gameController.game.newLevel(2)
         case "continue1":
-            levelController.player.continueLevel(0)
+            gameController.game.continueLevel(0)
         case "continue2":
-            levelController.player.continueLevel(1)
+            gameController.game.continueLevel(1)
         default:
-            levelController.player.continueLevel(2)
+            gameController.game.continueLevel(2)
         }
         
     }

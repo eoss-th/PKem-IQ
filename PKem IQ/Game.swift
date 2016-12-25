@@ -7,12 +7,11 @@
 //
 
 import Foundation
-import SwiftyJSON
 
-class Player {
+class Game {
     
     var levels = [JSON]()
-    var playerLevels = [JSON]()
+    var shuffleLevels = [JSON]()
     
     var index: Int = 0
     
@@ -32,17 +31,16 @@ class Player {
             if let data = try? Data(contentsOf: URL(fileURLWithPath: filePath!), options:NSData.ReadingOptions.alwaysMapped) {
                 
                 levels.append(JSON(data:data))
-                playerLevels.append(JSON(data:data))
+                shuffleLevels.append(JSON(data:data))
                 
             }
             
         }
     }
     
-    func newLevel(_ l:Int) {
-        let level = levels[l]
+    func shuffle(_ l:Int) {
         
-        //Shuffle!
+        let level = levels[l]
         var  i = 0
         var randomNumbers = [Int]()
         while randomNumbers.count < level.count {
@@ -54,46 +52,54 @@ class Player {
             }
             
             randomNumbers.append(numbersIndex)
-            playerLevels[l][i] = level[numbersIndex]
+            shuffleLevels[l][i] = level[numbersIndex]
             i = i + 1
         }
+        
+    }
+    
+    func newLevel(_ l:Int) {
+        
+        shuffle(l)
         
         currentLevel = l
         index = 0
         scorePoint = 0
         for j in 0..<currentLevel {
-            scorePoint = scorePoint + playerLevels[j].count
+            scorePoint = scorePoint + shuffleLevels[j].count
         }
         
     }
     
     func continueLevel(_ l:Int) {
         
+        shuffle(l)
+        
         currentLevel = l
         scorePoint = score.last
         index = scorePoint
 
         for j in 0..<currentLevel {
-            index = index - playerLevels[j].count
+            index = index - shuffleLevels[j].count
         }
         
     }
     
     func answers() -> JSON {
-        return playerLevels[currentLevel][index]["answers"]
+        return shuffleLevels[currentLevel][index]["answers"]
     }
     
     func answer() -> String {
-        return (playerLevels[currentLevel][index]["result"].number?.stringValue)!
+        return (shuffleLevels[currentLevel][index]["result"].number?.stringValue)!
     }
     
     func isClearedLevel()->Bool {
-        return index >= playerLevels[currentLevel].count
+        return index >= shuffleLevels[currentLevel].count
     }
     
     func isCorrected(_ playerAnswers:[String])->Bool {
         
-        let answers = playerLevels[currentLevel][index]["answers"]
+        let answers = shuffleLevels[currentLevel][index]["answers"]
         
         var match:Bool
         
