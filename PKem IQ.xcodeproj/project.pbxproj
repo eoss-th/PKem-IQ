@@ -17,13 +17,13 @@
 		92B6B2081B95F97100EDAD5B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B6B2061B95F97100EDAD5B /* LaunchScreen.xib */; };
 		92B6B2141B95F97100EDAD5B /* PKem_IQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6B2131B95F97100EDAD5B /* PKem_IQTests.swift */; };
 		92B6B21E1B95FF7600EDAD5B /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6B21D1B95FF7600EDAD5B /* GameController.swift */; };
-		92BC76B71B984B3B0041F1F2 /* level1.json in Resources */ = {isa = PBXBuildFile; fileRef = 92BC76B61B984B3B0041F1F2 /* level1.json */; };
-		92BC76BE1B984E470041F1F2 /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = 92BC76BC1B984E470041F1F2 /* level2.json */; };
-		92BC76BF1B984E470041F1F2 /* level3.json in Resources */ = {isa = PBXBuildFile; fileRef = 92BC76BD1B984E470041F1F2 /* level3.json */; };
 		BB0FB30A1E0D328F00A876FC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0FB3091E0D328F00A876FC /* Game.swift */; };
 		BB47D8E61E0D13C30088ADFE /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB47D8E41E0D13C30088ADFE /* tick.wav */; };
 		BB47D8E71E0D13C30088ADFE /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB47D8E51E0D13C30088ADFE /* wrong.wav */; };
 		BB47D8E91E0D13D60088ADFE /* drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB47D8E81E0D13D60088ADFE /* drop.wav */; };
+		BBD33E2E1E0FAAFA00CEE42E /* level1.json in Resources */ = {isa = PBXBuildFile; fileRef = BBD33E2B1E0FAAFA00CEE42E /* level1.json */; };
+		BBD33E2F1E0FAAFA00CEE42E /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = BBD33E2C1E0FAAFA00CEE42E /* level2.json */; };
+		BBD33E301E0FAAFA00CEE42E /* level3.json in Resources */ = {isa = PBXBuildFile; fileRef = BBD33E2D1E0FAAFA00CEE42E /* level3.json */; };
 		C7F044D21E0F5E3900759974 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F044D11E0F5E3900759974 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,13 +65,13 @@
 		92B6B2121B95F97100EDAD5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92B6B2131B95F97100EDAD5B /* PKem_IQTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKem_IQTests.swift; sourceTree = "<group>"; };
 		92B6B21D1B95FF7600EDAD5B /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
-		92BC76B61B984B3B0041F1F2 /* level1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level1.json; sourceTree = "<group>"; };
-		92BC76BC1B984E470041F1F2 /* level2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level2.json; sourceTree = "<group>"; };
-		92BC76BD1B984E470041F1F2 /* level3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level3.json; sourceTree = "<group>"; };
 		BB0FB3091E0D328F00A876FC /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		BB47D8E41E0D13C30088ADFE /* tick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tick.wav; sourceTree = "<group>"; };
 		BB47D8E51E0D13C30088ADFE /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
 		BB47D8E81E0D13D60088ADFE /* drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drop.wav; sourceTree = "<group>"; };
+		BBD33E2B1E0FAAFA00CEE42E /* level1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level1.json; sourceTree = "<group>"; };
+		BBD33E2C1E0FAAFA00CEE42E /* level2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level2.json; sourceTree = "<group>"; };
+		BBD33E2D1E0FAAFA00CEE42E /* level3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level3.json; sourceTree = "<group>"; };
 		C7F044D11E0F5E3900759974 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,12 +133,12 @@
 		92B6B1FB1B95F97100EDAD5B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BBD33E2B1E0FAAFA00CEE42E /* level1.json */,
+				BBD33E2C1E0FAAFA00CEE42E /* level2.json */,
+				BBD33E2D1E0FAAFA00CEE42E /* level3.json */,
 				BB47D8E81E0D13D60088ADFE /* drop.wav */,
 				BB47D8E41E0D13C30088ADFE /* tick.wav */,
 				BB47D8E51E0D13C30088ADFE /* wrong.wav */,
-				92BC76B61B984B3B0041F1F2 /* level1.json */,
-				92BC76BC1B984E470041F1F2 /* level2.json */,
-				92BC76BD1B984E470041F1F2 /* level3.json */,
 				92B6B1FC1B95F97100EDAD5B /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -247,13 +247,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92BC76B71B984B3B0041F1F2 /* level1.json in Resources */,
-				92BC76BE1B984E470041F1F2 /* level2.json in Resources */,
 				BB47D8E71E0D13C30088ADFE /* wrong.wav in Resources */,
+				BBD33E301E0FAAFA00CEE42E /* level3.json in Resources */,
 				92B6B2031B95F97100EDAD5B /* Main.storyboard in Resources */,
 				92B6B2081B95F97100EDAD5B /* LaunchScreen.xib in Resources */,
-				92BC76BF1B984E470041F1F2 /* level3.json in Resources */,
+				BBD33E2E1E0FAAFA00CEE42E /* level1.json in Resources */,
 				BB47D8E91E0D13D60088ADFE /* drop.wav in Resources */,
+				BBD33E2F1E0FAAFA00CEE42E /* level2.json in Resources */,
 				92B6B2051B95F97100EDAD5B /* Images.xcassets in Resources */,
 				BB47D8E61E0D13C30088ADFE /* tick.wav in Resources */,
 			);

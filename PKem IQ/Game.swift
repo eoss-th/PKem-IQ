@@ -12,6 +12,7 @@ class Game {
     
     var levels = [JSON]()
     var shuffleLevels = [JSON]()
+    var answerCompletedCounts = [5, 7, 9]
     
     var index: Int = 0
     
@@ -34,8 +35,11 @@ class Game {
                 shuffleLevels.append(JSON(data:data))
                 
             }
+
             
         }
+        
+        
     }
     
     func shuffle(_ l:Int) {
@@ -97,6 +101,14 @@ class Game {
         return index >= shuffleLevels[currentLevel].count
     }
     
+    func playerAnswersCompletedCount() -> Int {
+        return answerCompletedCounts[currentLevel]
+    }
+    
+    func isCompleted(_ playerAnswers:[String])->Bool {
+        return playerAnswersCompletedCount() == playerAnswers.count
+    }
+
     func isCorrected(_ playerAnswers:[String])->Bool {
         
         let answers = shuffleLevels[currentLevel][index]["answers"]
@@ -125,10 +137,14 @@ class Game {
     func next() {
         
         scorePoint = scorePoint + 1
-        score = Score(newScore: scorePoint)
         
         index += 1
         
+        saveScore()
+    }
+    
+    func saveScore() {
+        score = Score(newScore: scorePoint)
     }
     
     

@@ -128,9 +128,7 @@ class GameController : UIViewController {
         timer.invalidate()
         
         //Level Up!
-        if (game.isClearedLevel()) {
-            
-            print ("Fuck!!!!!")
+        if game.isClearedLevel() {
             
             performSegue(withIdentifier: "menu", sender: nil)
             
@@ -275,25 +273,28 @@ class GameController : UIViewController {
         result.text = ""
         result.textColor = UIColor.blue
         
+        var playerAnswers = [String]()
+        
         for c: UIButton in myPushed {
+            playerAnswers.append(c.titleLabel!.text!)
+            
             result.text = result.text! + " " + c.titleLabel!.text!
+            
+            if playerAnswers.count > 1 &&
+                playerAnswers.count % 2 != 0 &&
+                playerAnswers.count < game.playerAnswersCompletedCount() {
+                
+                result.text = "[" + result.text! + " ]"
+                
+            }
         }
         
-        if (game.currentLevel==0 && myPushed.count==5) ||
-            (game.currentLevel==1 && myPushed.count==7) ||
-            (game.currentLevel==2 && myPushed.count==9) || true {
+        if game.isCompleted(playerAnswers) {
             
-            var playerAnswers = [String]()
-            for i in 0 ..< myPushed.count {
-                playerAnswers.append(myPushed[i].titleLabel!.text!)
-            }
-            
-            if (/*game.isCorrected(playerAnswers)*/ true) {
+            if game.isCorrected(playerAnswers) {
                 
                 game.next()
                 next()
-                
-                return
                 
             } else {
                 
@@ -304,11 +305,10 @@ class GameController : UIViewController {
                 minus.isEnabled = false
                 mul.isEnabled = false
                 div.isEnabled = false
-                return
                 
             }
             
-            
+            return
         }
         
         let isForNum = myPushed.count % 2 == 0
