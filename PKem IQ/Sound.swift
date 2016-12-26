@@ -84,6 +84,6 @@ class SoundConfig {
             return soundJSON[0].boolValue
         }
         
-        return false
+        return true
     }
 }

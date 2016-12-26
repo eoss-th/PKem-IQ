@@ -21,6 +21,17 @@
 		BB47D8E61E0D13C30088ADFE /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB47D8E41E0D13C30088ADFE /* tick.wav */; };
 		BB47D8E71E0D13C30088ADFE /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB47D8E51E0D13C30088ADFE /* wrong.wav */; };
 		BB47D8E91E0D13D60088ADFE /* drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB47D8E81E0D13D60088ADFE /* drop.wav */; };
+		BB5E05601E11047500088B19 /* Crasng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB5E055E1E1100A300088B19 /* Crasng.ttf */; };
+		BB5E05611E11047700088B19 /* Crasns.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB5E055F1E1100A300088B19 /* Crasns.ttf */; };
+		BB5E05631E1106C200088B19 /* sunshiney.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB5E05621E1106C200088B19 /* sunshiney.regular.ttf */; };
+		BB945A031E10A71F004B047B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB945A021E10A71F004B047B /* UIColor.swift */; };
+		BB945A051E10D3F1004B047B /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB945A041E10D3F1004B047B /* GoogleMobileAds.framework */; };
+		BB945A0C1E10D456004B047B /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB945A061E10D456004B047B /* FirebaseAnalytics.framework */; };
+		BB945A0D1E10D456004B047B /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB945A071E10D456004B047B /* FirebaseCore.framework */; };
+		BB945A0E1E10D456004B047B /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB945A081E10D456004B047B /* FirebaseInstanceID.framework */; };
+		BB945A0F1E10D456004B047B /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB945A091E10D456004B047B /* GoogleInterchangeUtilities.framework */; };
+		BB945A101E10D456004B047B /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB945A0A1E10D456004B047B /* GoogleSymbolUtilities.framework */; };
+		BB945A111E10D456004B047B /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB945A0B1E10D456004B047B /* GoogleToolboxForMac.framework */; };
 		BBBC56BC1E0FB2A70022A2B3 /* level1.json in Resources */ = {isa = PBXBuildFile; fileRef = BBBC56B91E0FB2A70022A2B3 /* level1.json */; };
 		BBBC56BD1E0FB2A70022A2B3 /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = BBBC56BA1E0FB2A70022A2B3 /* level2.json */; };
 		BBBC56BE1E0FB2A70022A2B3 /* level3.json in Resources */ = {isa = PBXBuildFile; fileRef = BBBC56BB1E0FB2A70022A2B3 /* level3.json */; };
@@ -69,6 +80,17 @@
 		BB47D8E41E0D13C30088ADFE /* tick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tick.wav; sourceTree = "<group>"; };
 		BB47D8E51E0D13C30088ADFE /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
 		BB47D8E81E0D13D60088ADFE /* drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drop.wav; sourceTree = "<group>"; };
+		BB5E055E1E1100A300088B19 /* Crasng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Crasng.ttf; path = ../Crasng.ttf; sourceTree = "<group>"; };
+		BB5E055F1E1100A300088B19 /* Crasns.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Crasns.ttf; path = ../Crasns.ttf; sourceTree = "<group>"; };
+		BB5E05621E1106C200088B19 /* sunshiney.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sunshiney.regular.ttf; sourceTree = "<group>"; };
+		BB945A021E10A71F004B047B /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		BB945A041E10D3F1004B047B /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		BB945A061E10D456004B047B /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		BB945A071E10D456004B047B /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
+		BB945A081E10D456004B047B /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		BB945A091E10D456004B047B /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		BB945A0A1E10D456004B047B /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		BB945A0B1E10D456004B047B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
 		BBBC56B91E0FB2A70022A2B3 /* level1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level1.json; sourceTree = "<group>"; };
 		BBBC56BA1E0FB2A70022A2B3 /* level2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level2.json; sourceTree = "<group>"; };
 		BBBC56BB1E0FB2A70022A2B3 /* level3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level3.json; sourceTree = "<group>"; };
@@ -80,6 +102,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB945A111E10D456004B047B /* GoogleToolboxForMac.framework in Frameworks */,
+				BB945A101E10D456004B047B /* GoogleSymbolUtilities.framework in Frameworks */,
+				BB945A0C1E10D456004B047B /* FirebaseAnalytics.framework in Frameworks */,
+				BB945A051E10D3F1004B047B /* GoogleMobileAds.framework in Frameworks */,
+				BB945A0D1E10D456004B047B /* FirebaseCore.framework in Frameworks */,
+				BB945A0E1E10D456004B047B /* FirebaseInstanceID.framework in Frameworks */,
+				BB945A0F1E10D456004B047B /* GoogleInterchangeUtilities.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +125,13 @@
 		92B6B1EF1B95F97000EDAD5B = {
 			isa = PBXGroup;
 			children = (
+				BB945A061E10D456004B047B /* FirebaseAnalytics.framework */,
+				BB945A071E10D456004B047B /* FirebaseCore.framework */,
+				BB945A081E10D456004B047B /* FirebaseInstanceID.framework */,
+				BB945A091E10D456004B047B /* GoogleInterchangeUtilities.framework */,
+				BB945A0A1E10D456004B047B /* GoogleSymbolUtilities.framework */,
+				BB945A0B1E10D456004B047B /* GoogleToolboxForMac.framework */,
+				BB945A041E10D3F1004B047B /* GoogleMobileAds.framework */,
 				92B6B1FA1B95F97100EDAD5B /* PKem IQ */,
 				92B6B2101B95F97100EDAD5B /* PKem IQTests */,
 				92B6B1F91B95F97100EDAD5B /* Products */,
@@ -123,6 +159,7 @@
 				92B6B2061B95F97100EDAD5B /* LaunchScreen.xib */,
 				92B6B1FB1B95F97100EDAD5B /* Supporting Files */,
 				92B6B21D1B95FF7600EDAD5B /* GameController.swift */,
+				BB945A021E10A71F004B047B /* UIColor.swift */,
 				929421111B9929A600043F69 /* Score.swift */,
 				926B20051BA0A2100017AFAA /* Sound.swift */,
 				BB0FB3091E0D328F00A876FC /* Game.swift */,
@@ -133,6 +170,9 @@
 		92B6B1FB1B95F97100EDAD5B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB5E05621E1106C200088B19 /* sunshiney.regular.ttf */,
+				BB5E055E1E1100A300088B19 /* Crasng.ttf */,
+				BB5E055F1E1100A300088B19 /* Crasns.ttf */,
 				BBBC56B91E0FB2A70022A2B3 /* level1.json */,
 				BBBC56BA1E0FB2A70022A2B3 /* level2.json */,
 				BBBC56BB1E0FB2A70022A2B3 /* level3.json */,
@@ -247,13 +287,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB5E05601E11047500088B19 /* Crasng.ttf in Resources */,
 				BB47D8E71E0D13C30088ADFE /* wrong.wav in Resources */,
 				BBBC56BE1E0FB2A70022A2B3 /* level3.json in Resources */,
 				92B6B2031B95F97100EDAD5B /* Main.storyboard in Resources */,
 				92B6B2081B95F97100EDAD5B /* LaunchScreen.xib in Resources */,
 				BBBC56BC1E0FB2A70022A2B3 /* level1.json in Resources */,
 				BB47D8E91E0D13D60088ADFE /* drop.wav in Resources */,
+				BB5E05631E1106C200088B19 /* sunshiney.regular.ttf in Resources */,
 				BBBC56BD1E0FB2A70022A2B3 /* level2.json in Resources */,
+				BB5E05611E11047700088B19 /* Crasns.ttf in Resources */,
 				92B6B2051B95F97100EDAD5B /* Images.xcassets in Resources */,
 				BB47D8E61E0D13C30088ADFE /* tick.wav in Resources */,
 			);
@@ -277,6 +320,7 @@
 				BB0FB30A1E0D328F00A876FC /* Game.swift in Sources */,
 				92B6B2001B95F97100EDAD5B /* HomeController.swift in Sources */,
 				C7F044D21E0F5E3900759974 /* SwiftyJSON.swift in Sources */,
+				BB945A031E10A71F004B047B /* UIColor.swift in Sources */,
 				92B6B21E1B95FF7600EDAD5B /* GameController.swift in Sources */,
 				92B6B1FE1B95F97100EDAD5B /* AppDelegate.swift in Sources */,
 				929421121B9929A600043F69 /* Score.swift in Sources */,
@@ -418,6 +462,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "PKem IQ/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -436,6 +484,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "PKem IQ/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

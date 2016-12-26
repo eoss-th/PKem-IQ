@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class GameController : UIViewController {
+
+    @IBOutlet weak var question: UIButton!
+    @IBOutlet weak var score: UIButton!
     
-    @IBOutlet weak var score: UILabel!
-    @IBOutlet weak var time: UILabel!
     @IBOutlet weak var result: UILabel!
-    @IBOutlet weak var answer: UILabel!
     
-    @IBOutlet weak var menu: UIButton!
+    @IBOutlet weak var time: UIButton!
     @IBOutlet weak var num1: UIButton!
     @IBOutlet weak var num2: UIButton!
     @IBOutlet weak var num3: UIButton!
@@ -25,7 +26,9 @@ class GameController : UIViewController {
     @IBOutlet weak var minus: UIButton!
     @IBOutlet weak var mul: UIButton!
     @IBOutlet weak var div: UIButton!
-    
+
+    var interstitial: GADInterstitial!
+
     let game = Game()
     
     var myPushed: Array<UIButton>=[]
@@ -36,6 +39,15 @@ class GameController : UIViewController {
     var soundEnabled: Bool = false
     
     var sound:Sound!
+    
+    fileprivate func createAndLoadInterstitial() {
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-2408994207086484/5722695057")
+        let request = GADRequest()
+        // Request test ads on devices you specify. Your test device ID is printed to the console when
+        // an ad request is made.
+        request.testDevices = [ kGADSimulatorID, "6cb23b70086e37bbf7c42b9e466ed480" ]
+        interstitial.load(request)
+    }
     
     @IBAction func plus(_ sender: UIButton) {
         onPushed(sender)
@@ -81,13 +93,9 @@ class GameController : UIViewController {
         
         self.sound = Sound(enabled: soundEnabled)
         
-        answer.layer.borderColor = UIColor.white.cgColor
-        answer.textColor = UIColor.white
-        
-        score.makeRoundLabel(1.2, radius: 15, color: UIColor.white)
-        answer.makeRoundLabel(2, radius: 30, color: UIColor.white)
-        
-        menu.makeRoundButton(1.2, radius: 15, color: UIColor.white)
+        score.makeRoundButton(1.2, radius: 15, color: UIColor.white)
+        question.makeRoundButton(2, radius: 30, color: UIColor.white)
+        time.makeRoundButton(1.2, radius: 15, color: UIColor.white)
         plus.makeRoundButton(1.2, radius: 5, color: UIColor.white)
         minus.makeRoundButton(1.2, radius: 5, color: UIColor.white)
         mul.makeRoundButton(1.2, radius: 5, color: UIColor.white)
@@ -108,6 +116,14 @@ class GameController : UIViewController {
             sound.playTick()
         }
         
+        if result.textColor == UIColor.red && timeCounter % 5 == 0 {
+            toast("Swipe Left to Undo")
+        }
+        
+        if result.text == "" && timeCounter % 10 == 0 {
+            toast("Press a Number!")
+        }
+        
         if timeCounter==0 {
             sound.playWrong()
         }
@@ -117,7 +133,7 @@ class GameController : UIViewController {
             return
         }
         
-        menu.setTitle("\(timeCounter)", for: UIControlState())
+        time.setTitle("\(timeCounter)", for: UIControlState())
         timeCounter = timeCounter - 1
         
         //updateAnswer()
@@ -125,6 +141,7 @@ class GameController : UIViewController {
     
     func next() {
         
+        createAndLoadInterstitial()
         timer.invalidate()
         
         //Level Up!
@@ -141,8 +158,8 @@ class GameController : UIViewController {
         
         myPushed = []
         
-        score.text = String(game.scorePoint)
-        answer.text = game.answer()
+        score.setTitle(String(game.scorePoint), for: UIControlState())
+        question.setTitle(game.answer(), for: UIControlState())
         
         let answers = game.answers()
         let answersIndex = Int(arc4random_uniform(UInt32(answers.count)))
@@ -293,14 +310,18 @@ class GameController : UIViewController {
             
             if game.isCorrected(playerAnswers) {
                 
+                if interstitial.isReady {
+                    interstitial.present(fromRootViewController: self)
+                }
+                
                 game.next()
                 next()
-                
+                            
             } else {
                 
                 sound.playWrong()
                 //Invalid Result
-                result.textColor = UIColor.lightGray
+                result.textColor = UIColor.red
                 plus.isEnabled = false
                 minus.isEnabled = false
                 mul.isEnabled = false
@@ -338,5 +359,28 @@ class GameController : UIViewController {
         
         timer.invalidate()
         
+    }
+    
+    func toast(_ text:String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x:self.view.frame.size.width/2 - 150, y:self.view.frame.size.height/2 - 50, width:300, height:35))
+        
+        toastLabel.text = text
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = UIFont(name: "Futura", size: 20)
+        toastLabel.textAlignment = NSTextAlignment.center;
+        toastLabel.backgroundColor = UIColor.red
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        
+        self.view.addSubview(toastLabel)
+        
+        UIView.animate(withDuration: 3.0, delay: 0.1, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {
+            (finished: Bool) in
+            toastLabel.removeFromSuperview()
+        })
     }
 }

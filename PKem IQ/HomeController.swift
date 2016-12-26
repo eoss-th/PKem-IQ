@@ -30,6 +30,8 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        leaderBoard.makeRoundButton(1.2, radius: 5, color: UIColor.white)
+        
         threeNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.white)
         
         fourNumbers.makeRoundButton(1.2, radius: 5, color: UIColor.white)
@@ -140,7 +142,9 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func showLeaderboard(_ sender: AnyObject) {
+    @IBAction func showGameCenter(_ sender: UIButton) {
+        
+        sender.setTitle("Loading...", for: UIControlState())
         
         gameCenter({ () -> () in
             
@@ -148,25 +152,24 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
             let sScore = GKScore(leaderboardIdentifier: leaderboardID)
             sScore.value = Int64(Score().max)
             
-            //let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
-            
             let gcVC: GKGameCenterViewController = GKGameCenterViewController()
             gcVC.gameCenterDelegate = self
             gcVC.viewState = GKGameCenterViewControllerState.leaderboards
             gcVC.leaderboardIdentifier = leaderboardID
-            self.present(gcVC, animated: true, completion: nil)
+            self.present(gcVC, animated: true, completion: {
+                sender.setTitle("World Ranking", for: UIControlState())
+            })
             
             GKScore.report([sScore], withCompletionHandler: { (error: Error?) -> Void in
                 
                 if error != nil {
-                    //println(error.localizedDescription)
+                    sender.setTitle("World Ranking", for: UIControlState())
                 }
                 
             })
             
             
         })
-        
     }
     
 }
