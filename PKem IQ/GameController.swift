@@ -45,7 +45,7 @@ class GameController : UIViewController {
         let request = GADRequest()
         // Request test ads on devices you specify. Your test device ID is printed to the console when
         // an ad request is made.
-        request.testDevices = [ kGADSimulatorID, "6cb23b70086e37bbf7c42b9e466ed480" ]
+        //request.testDevices = [ kGADSimulatorID, "6cb23b70086e37bbf7c42b9e466ed480" ]
         interstitial.load(request)
     }
     
@@ -116,12 +116,18 @@ class GameController : UIViewController {
             sound.playTick()
         }
         
-        if result.textColor == UIColor.red && timeCounter % 5 == 0 {
-            toast("Swipe Left to Undo")
-        }
-        
-        if result.text == "" && timeCounter % 10 == 0 {
-            toast("Press a Number!")
+        if timeCounter > 0 {
+            
+            if result.textColor == UIColor.red && timeCounter % 5 == 0 {
+                toast("Swipe Left to Undo")
+            }
+            
+            if result.text == "" && timeCounter % 10 == 0 {
+                toast("Press a Number!")
+            }
+            
+        } else {
+            toast("Game Over!")
         }
         
         if timeCounter==0 {
@@ -363,15 +369,15 @@ class GameController : UIViewController {
     
     func toast(_ text:String) {
         
-        let toastLabel = UILabel(frame: CGRect(x:self.view.frame.size.width/2 - 150, y:self.view.frame.size.height/2 - 50, width:300, height:35))
+        let toastLabel = UILabel(frame: CGRect(x:self.view.frame.size.width/2 - 150, y:self.view.frame.size.height/3 + 20, width:300, height:35))
         
         toastLabel.text = text
         toastLabel.textColor = UIColor.white
-        toastLabel.font = UIFont(name: "Futura", size: 20)
+        toastLabel.font = UIFont(name: "Sunshiney", size: 25)
         toastLabel.textAlignment = NSTextAlignment.center;
-        toastLabel.backgroundColor = UIColor.red
+        //toastLabel.backgroundColor = UIColor.red
+        //toastLabel.layer.cornerRadius = 10;
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
         toastLabel.clipsToBounds  =  true
         
         self.view.addSubview(toastLabel)

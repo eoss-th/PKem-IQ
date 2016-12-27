@@ -22,12 +22,16 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
     
     @IBOutlet weak var toggleSound: UISwitch!
     
+    var localPlayer: GKLocalPlayer?
+    
     @IBAction func toggleSound(_ sender: UISwitch) {
         SoundConfig().toggle(sender.isOn)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        localPlayer = GKLocalPlayer.localPlayer()
         
         // Do any additional setup after loading the view, typically from a nib.
         leaderBoard.makeRoundButton(1.2, radius: 5, color: UIColor.white)
@@ -61,30 +65,28 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
         
     }
     
-    func gameCenter(_ onSucceed:@escaping ()->()) {
+    func gameCenter(_ sender:UIButton, onSucceed:@escaping ()->()) {
         
-        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
-        
-        if localPlayer.isAuthenticated {
+        if localPlayer!.isAuthenticated {
             
             onSucceed()
             
         } else {
             
-            localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            localPlayer!.authenticateHandler = {(ViewController, error) -> Void in
                 
                 // 1 Show login if player is not logged in
-                if((ViewController) != nil) {
+                if (ViewController) != nil {
                     
                     self.present(ViewController!, animated: true, completion: nil)
                     
                 }
                     
                     // 2 Player is already euthenticated & logged in, load game center
-                else if (localPlayer.isAuthenticated) {
+                else if self.localPlayer!.isAuthenticated {
                     
                     // Get the default leaderboard ID
-                    localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer: String?, error: Error?) -> Void in
+                    self.localPlayer!.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer: String?, error: Error?) -> Void in
                         
                         if error != nil {
                             
@@ -105,6 +107,7 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
                     print(error ?? "")
                 }
                 
+                sender.setTitle("World Ranking", for: UIControlState())
             }
         }
         
@@ -146,7 +149,7 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
         
         sender.setTitle("Loading...", for: UIControlState())
         
-        gameCenter({ () -> () in
+        gameCenter(sender, onSucceed: { () -> () in
             
             let leaderboardID = "PKemIQ"
             let sScore = GKScore(leaderboardIdentifier: leaderboardID)
@@ -163,11 +166,10 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
             GKScore.report([sScore], withCompletionHandler: { (error: Error?) -> Void in
                 
                 if error != nil {
-                    sender.setTitle("World Ranking", for: UIControlState())
                 }
                 
+                sender.setTitle("World Ranking", for: UIControlState())
             })
-            
             
         })
     }
