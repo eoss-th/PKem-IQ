@@ -55,13 +55,13 @@ class HomeController: UIViewController, GKGameCenterControllerDelegate {
         toggleSound.isOn = SoundConfig().isOn()
         
         threeNumbers.isEnabled = score.max >= 0
-        continue1.isHidden = score.last <= 0 || score.last >= 100
+        continue1.isHidden = score.last <= 0 || score.last >= 99
         
-        fourNumbers.isEnabled = score.max >= 100
-        continue2.isHidden = score.last <= 100 || score.last >= 235
+        fourNumbers.isEnabled = score.max >= 99
+        continue2.isHidden = score.last <= 99 || score.last >= 99 + 129
         
-        fiveNumbers.isEnabled = score.max >= 235
-        continue3.isHidden = score.last <= 235 || score.last >= 235 + 129
+        fiveNumbers.isEnabled = score.max >= 99 + 129
+        continue3.isHidden = score.last <= 99 + 129 || score.last >= 99 + 129 + 96
         
     }
     

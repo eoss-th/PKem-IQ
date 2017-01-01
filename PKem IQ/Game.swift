@@ -34,6 +34,8 @@ class Game {
                 levels.append(JSON(data:data))
                 shuffleLevels.append(JSON(data:data))
                 
+                print (JSON(data:data).count)
+                
             }
 
             
